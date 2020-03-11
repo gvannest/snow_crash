@@ -1,0 +1,5 @@
+cat /etc/passwd 
+We find a hashed password at line of user flag01
+on Kali VM: sudo apt-get john
+on Kali VM : echo "42hDRfypTqqnw" > pass (we put the password in a file)
+on Kali VM: sudo john pass or sudo john --show pass -> abcdefg

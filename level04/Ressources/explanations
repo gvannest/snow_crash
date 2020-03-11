@@ -1,0 +1,4 @@
+1. When we query localhost:4747/level04.pl?x=toto, the program level04.pl is executed, and the x parameter is passed to the subroutine. $y is set to equal x (the first parameter), and the program print the result of echo $y.
+2. Passing x=getflag as an argument only returns getflag
+3. passing `getflag` as an argument executes getflag before sending the request, so without the flag04 permissions (set by the program - cf the 's' permission set). It needs to be executed within the program
+4. passing "\`getflag\`" sends `getflag` as a string, which is executed within the program.

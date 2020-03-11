@@ -1,0 +1,7 @@
+1. launching the command `strings level03` on the executable, we notice the presence of /usr/bin/env echo.
+2. `nm level03` we see a call to the system function, making a system call, probably to echo, so we need to change it by getflag in some way
+3. When executing `echo` the process look in the env $PATH variable, in every directory and in order, to find the executable. Hence we can mislead the process:
+	- in our home directory (for ex), we create a folder, let's say `mkdir toto`
+	- We look for the path to the getflag function with the command `which getflag`
+	- in our toto directory, we set a symlink: "ln -s `which getflag` echo" so that echo links to the getflag executable
+	- then we add this folder to the env PATH variable : "export PATH=`pwd`/toto:$PATH" to put the new file in front of the PATH env variable (and not at the back otherwise it would find the true echo first!)
