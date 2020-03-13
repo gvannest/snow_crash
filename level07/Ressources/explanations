@@ -1,0 +1,10 @@
+1. ./level07 => displays "level07"
+
+2. gdb ./level07 
+	disas main or info functions => it calls getenv
+
+3. quit gdb. check env variable with "env" : we have several variables with level07 : USER, LOGNAME...
+
+4. Changing LOGNAME with "export LOGNAME=coucou", we see that this one is printed
+
+5. export LOGNAME=\`getflag\`
