@@ -1,0 +1,13 @@
+1. we try ./level08 token => You may not access token 
+
+2. when lloking into the functions with a 'strings level08', we see that they use the 'strstr' function from libC
+
+3. Disassembling the main with gdb, we see that they apply strstr and then test if they found a substr.
+
+4. In 'strings level08', we see the word 'token' before the string 'You may not access token'. So we tried to change the name of the file to 'coucou' and launch './level08 coucou'
+
+5. on a le token : quif5eloekouj29ke0vouxean
+
+6. su flag08 with the above mentioned password
+
+7. getflag :)

@@ -1,0 +1,22 @@
+1. ./level09 token => tpmhr
+	./level09 test => tfuw
+	echo coucou > test	
+	./level09 `cat test` => cpwfsz
+
+	We notice that the level09 executable change the string passed as parameter. It actually change it by increasing the ascii character by its index in the string 
+
+
+2. cat token => f4kmm6p|=�p�n��DB�Du{��
+   it seems like the resut of a string passed to the level09 exec.
+
+3. So we built a script which would reverse the effect of the level09 program, by decreasing the ascii character of the string 
+
+4. python reverse.py `cat token`
+=> f3iji1ju5yuevaus41q1afiuq
+
+5. su flag09
+Password found above
+
+6. getflag!
+
+
