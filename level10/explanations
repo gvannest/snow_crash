@@ -1,0 +1,19 @@
+The binary level10 has a the following usage
+./level10 file host
+	sends file to host if you have access to it
+
+Unfortunately we don't have acces to the file token, which is the same size as the other flag.
+
+Sending another file, we got another message error:
+Connecting to 127.0.0.1:6969 .. Unable to connect to host 127.0.0.1
+
+We realise that no service were listening on port 6969 (netstat -a).
+
+We use the command "nc -lk 6969" to listen to this port.
+
+The binary sends the file content to the port 6969.
+But we still didn't have acces to it.
+
+We checked all the functions called (nm / strings) and read the man.
+
+Access presents some security problem: concurential access.
