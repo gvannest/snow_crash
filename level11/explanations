@@ -1,0 +1,12 @@
+1. cat level11.lua
+
+2. At first we noticed the hash which when decrypted gives "NotSoEasy" :)
+
+3 the hash function executes a function via io.popen : "echo "..pass.." | sha1sum"
+Hence if we manage to give a pass input which will be exectued in this command, it could give us the flag!
+
+4. We connect to the listening port 5151 : > nc 127.0.0.1 5151 
+
+5. The prompt asks us for a password: `getflag > /tmp/test`
+
+6. cat /tmp/test => the flag!
