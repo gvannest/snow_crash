@@ -1,0 +1,33 @@
+1. We start by executing the binary file: ./level13
+we get the following message: "UID 2013 started us but we we expect 4242"
+
+2. launching strings on the executable we see that it does not call much functions except getuid, and disassembling it we see that it is the first function called and check for 4242.
+
+3 So we are going to dynamically inject our own getuid function via the dynamic library injection:
+	- we create a myuid.c file containing the following function:
+
+	int getuid(){
+		return 4242;
+	}
+
+	Which we will try to inject in the executable.
+
+4. We compile our dynamic library: 
+gcc -shared -fPIC myuid.c -o /tmp/myuid/myuid.so 
+Note: -fPIC is used to make the lib functions address relatives and not absolute
+
+5. We set the LD_PRELOAD env variable:
+export LD_PRELOAD="/tmp/myuid/myuid.so"
+Note: LD_PRELOAD specifies a library which will be loaded prior to any other library when the program gets executed.
+
+6. Then launching the 'id' command we see that our UID is 4242, so we are suppose to be good!
+
+7. We launch the script : ./level13, but we get the same message :(
+
+8. Actually, the setuid bit ('s' in permissions) being set on, the program is executed in the context of the owner, with his environment and so not the LD_PRELOAD env that you set!
+
+9. Copying the executable : cp level13 level13_copy
+removes the setuid bit and execute it in my environment
+
+10 ./level13_copy gives:
+your token is 2A31L79asukciNyi8uppkEuSx
