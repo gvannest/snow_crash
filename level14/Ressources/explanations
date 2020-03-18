@@ -1,0 +1,34 @@
+1. There is nothing referring to level14 or flag14
+
+2. We have to crack the getflag binary
+
+3. gdb getflag 
+  set disassembly-flavor intel
+
+4. disas main
+
+5. we notice that the main call getuid function at line main+439 and then make a series of comparison, probably to see if the uid correspond to a flag user and print the token afterwards. So we can put a breakpoint at line 452 and change the eax register content by 0xBC6 (which is equal to 3014 in hex; 3014 is the uid of the flag15 user you can find through `cat /etc/passwd`.
+
+6. then we run the prgram through gdb, But we have the following message:
+"Starting program: /bin/getflag
+You should not reverse this
+[Inferior 1 (process 1952) exited with code 01]"
+
+So there is something blocking us from running the program through gdb.
+
+7. We notice it is the ptrce function which allows to track if the process is run through another process (among other things). So we first need to change the return value of the ptrce function to make it look like there is no other process.
+
+8. Then we can do 'next', stop at our other breakpoint and change the return of getuid.
+
+9. Here is the complete setps:
+	gdb getflag
+	set disassembly-flavor intel
+	b *0x0804898e (line 72, after the call to ptrace)
+	b *0x08048b0a (line 452 starting comparison of uid)
+	run
+	p $eax = 0 (at first bk we change the value of the retunr register)
+	next
+	p $eax = 0xBC6 (at 2nd bk pt we change the value of eax to the uid of flag14)
+	next
+
+And we get our token !
