@@ -1,5 +1,6 @@
 1. transfer .pcap file from snow_crash vm to kali_vm : scp -P 4242 level02@10.112.1.140:~/*.pcap .
 2. sudo tshark -r fichier.pcap -V | grep Data:
+3. last line : 000d0a4c6f67696e20696e636f72726563740d0a77777762  = Login incorrect
 3. Data: 000d0a50617373776f72643a20 = Password:
 4. Copy and paste from Data: 66 to Data: 01 in https://www.rapidtables.com/convert/number/hex-to-ascii.html
 5. Here is the Password: ft_wandrNDReL0L
