@@ -1,4 +1,5 @@
-cf video :
-	find . -user flag00
+cf video 51'':
+	"FIND this first file who can run only as flag00..."
+	find . -user flag00 2>/dev/null
 	cat /usr/sbin/john -> cdiiddwpgswtgt
 	dechiffrement Cesar sur dcode.fr -> nottoohardhere
