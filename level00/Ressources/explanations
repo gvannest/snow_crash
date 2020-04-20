@@ -3,3 +3,6 @@ cf video 51'':
 	find . -user flag00 2>/dev/null
 	cat /usr/sbin/john -> cdiiddwpgswtgt
 	dechiffrement Cesar sur dcode.fr -> nottoohardhere
+	su flag00
+	password: nottoohardhere
+	getflag

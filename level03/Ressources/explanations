@@ -4,4 +4,4 @@
 	- in our home directory (for ex), we create a folder, let's say `mkdir toto`
 	- We look for the path to the getflag function with the command `which getflag`
 	- in our toto directory, we set a symlink: "ln -s `which getflag` echo" so that echo links to the getflag executable
-	- then we add this folder to the env PATH variable : "export PATH=`pwd`/toto:$PATH" to put the new file in front of the PATH env variable (and not at the back otherwise it would find the true echo first!)
+	- then we add this folder to the env PATH variable : "export PATH=`pwd`:$PATH" to put the new file in front of the PATH env variable (and not at the back otherwise it would find the true echo first!)
