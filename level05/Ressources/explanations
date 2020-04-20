@@ -15,7 +15,7 @@
 	It tries to execute every file in the /opt/openarenaserver directory and then delete it 
 	Hence we haveve to create a script that will be executed by the script with the flag05 permissions 
 
-4. echo "getflag > /tmp/flag05" > script.sh
+4. echo "getflag > /tmp/flag05" > /opt/openarenaserver/script.sh
 	we need to create the file in tmp as it is a shared directory 
 
 5. cat /tmp/flag05 -> here you go!
