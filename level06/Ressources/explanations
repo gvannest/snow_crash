@@ -1,6 +1,6 @@
 1. ll -> level06 executable. When we execute it alone, there is an error message saying : "file_get_contents(): Filename cannot be empty in /home/user/level06/level06.php on line 4"
 
-2. So we look into the php file and see that the argument 1 is passed onto the x function and its content goes through multiple regex.
+2. So we look into the php file and see that the argument 1 is passed onto the x function, then its content is retreived (so must be a file) and finally its content goes through multiple regex.
 
 3. in the first regex, there is an e flag which means it will execute the second argument of the preg_replace function, as php code. This second argument actually calls the y function on the 2nd part of the matching regex. y function does not execute anything so we have to make sure the 2nd match is actually executed / evaluated when the call to y happens.
 
@@ -10,6 +10,6 @@
 
 6. hence: "[x {${system(getflag)}}]" is a string that will match the regex, and with the second part being what we want to be executed
 
-7. echo "[x {${system(getflag)}}]" > /tmp/flag06
+7. echo "'[x {${system(getflag)}}]'" > /tmp/flag06
 8. ./level06 /tmp/flag06 
 
