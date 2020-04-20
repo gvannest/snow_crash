@@ -17,3 +17,7 @@ But we still didn't have acces to it.
 We checked all the functions called (nm / strings) and read the man.
 
 Access presents some security problem: concurential access.
+
+We must launch the script creating a file and a symlink to token with the same name : hack
+At the same time, we try to print the content of the file (with the binary level10) to the port 6969.
+We hope that the function access (control of the access right) will occur when hack is our file but print when hack is a synlink to toekn !

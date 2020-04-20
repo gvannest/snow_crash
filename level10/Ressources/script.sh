@@ -1,8 +1,8 @@
 #!/bin/bash
 while true;
 do
-    rm -f test;
-    touch test;
-    rm -f test;
-    ln -s token test;
+    rm -f hack;
+    touch hack;
+    rm -f hack;
+    ln -s token hack;
 done
